@@ -17,6 +17,7 @@ int main(void)
 			printf("\n");
 			break;
 		}
+		usrinpt[strlen(usrinpt) - 1] = '\0';
 		/*usrinpt[strcspn(usrinpt, "\n")] = 0;*/
 		args[0] = usrinpt;
 		args[1] = NULL;
