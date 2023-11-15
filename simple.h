@@ -11,10 +11,15 @@
 #include <signal.h>
 #include <sys/wait.h>
 
+struct shell_s {
+	char **args;
+	int argc;
+	char *name;
+}
+
 #define BUFFSIZE (1024)
 #define PROMPT ("$ ")
-#define DELIM " \t\r\n\a"
-char **spliter(char *line);
-char *user_inp(void);
-int executer(char **args);
+#define DELIM (" \t\r\n\a")
+char *tocmd(char *userinp);
+void simp_exec(struct shell_s comm);
 #endif
