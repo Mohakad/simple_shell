@@ -6,22 +6,19 @@
  */
 char **tocmd(char *userinp)
 {
-	char *token;
+	int argc = 1, i = 0;
 
-	int i;
+	char *token, **comm;
 
-	struct shell_s comm;
-
-	comm.argc = 1;
 	token = strtok(userinp, " ");
 
 	while (token != NULL)
 	{
-		comm.argc++;
 		token = strtok(NULL, " ");
+		argc++;
 	}
-	comm.args = malloc(comm.argc * sizeof(char *));
-	if (comm.args == NULL)
+	comm = malloc(argc * sizeof(char *));
+	if (comm == NULL)
 	{
 		perror("malloc");
 		exit(1);
@@ -29,10 +26,9 @@ char **tocmd(char *userinp)
 	token = strtok(userinp, " ");
 	while (token != NULL)
 	{
-		comm.args[i] = token;
+		comm[i] = token;
 		i++;
 		token = strtok(NULL, " ");
 	}
-	comm.name = comm.args[0];
 	return (comm);
 }
