@@ -16,7 +16,7 @@ int main(void)
 
 	while (1)
 	{
-		printf("($) ");
+		printf("#cisfun$ ");
 		if (fgets(usrinpt, 100, stdin) == NULL)
 		{
 			printf("\n");
@@ -26,15 +26,15 @@ int main(void)
 		args[0] = usrinpt;
 		args[1] = NULL;
 		pid = fork();
-		if (pid == 0)
-		{
-			execve(usrinpt, args, NULL);
-			perror("execve");
-			exit(1);
-		}
-		else if (pid < 0)
+		if (pid < 0)
 		{
 			perror("fork");
+			exit(1);
+		}
+		else if (pid == 0)
+		{
+			execve(usrinpt, args, NULL);
+			perror("./shell");
 			exit(1);
 		}
 		else
