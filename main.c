@@ -5,38 +5,28 @@
  */
 int main(void)
 {
-	char usrinpt[100], *args[2];
-
-	pid_t pid;
-
+	char usrinpt[COMM_LENGTH], **env = environ;
+	
 	while (1)
 	{
 		printf("($) ");
-		if (fgets(usrinpt, 100, stdin) == NULL)
+		if (fgets(usrinpt, COMM_LENGTH, stdin) == NULL)
 		{
 			printf("\n");
 			break;
 		}
-		usrinpt[shl_strlen(usrinpt) - 1] = '\0';
-		/*usrinpt[strcspn(usrinpt, "\n")] = 0;*/
-		args[0] = usrinpt;
-		args[1] = NULL;
-		pid = fork();
-		if (pid < 0)
+		if (shl_strcmp(usrinpt, "exit") == 0)
+			break;
+		if (strcmp(usrinpt, "env") == 0)
 		{
-			perror("fork");
-			exit(1);
+			while (*env != NULL)
+			{
+				printf("%s\n", *env);
+				env++;
+			}
+			continue;
 		}
-		else if (pid == 0)
-		{
-			execve(usrinpt, args, NULL);
-			perror("./shell");
-			exit(1);
-		}
-		else
-		{
-			wait(NULL);
-		}
+		executer(usrinpt);
 	}
 	return (0);
 }
