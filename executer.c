@@ -8,7 +8,7 @@ void executer(char *userinpt)
 	pid_t pid;
 
 	char *args[ARG_S + 1];
-	
+
 	tokniz(userinpt, args);
 	pid = fork();
 	if (pid < 0)
@@ -37,13 +37,13 @@ void executer2(char **args)
 	char *path = getenv("PATH");
 
 	path2 = shl_strcpy(path2, path);
-	
+
 	tokenedp = strtok(path2, ":");
-	
+
 	while (tokenedp != NULL)
 	{
 		char path_userinpt[COMM_LENGTH];
-		
+
 		shl_strcpy(path_userinpt, tokenedp);
 		shl_strcat(path_userinpt, "/");
 		shl_strcat(path_userinpt, args[0]);

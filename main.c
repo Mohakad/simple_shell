@@ -6,7 +6,7 @@
 int main(void)
 {
 	char usrinpt[COMM_LENGTH], **env = environ;
-	
+
 	while (1)
 	{
 		printf("($) ");
