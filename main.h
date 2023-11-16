@@ -7,6 +7,8 @@
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/wait.h>
+#include <fcntl.h>
+#include <sys/stat.h>
 
 extern char **environ;
 #define COMM_LENGTH (1024)
