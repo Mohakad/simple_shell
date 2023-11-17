@@ -1,3 +1,4 @@
+#include "shell.h"
 /**
  * shl_strcpy - str copy
  * @str2: to

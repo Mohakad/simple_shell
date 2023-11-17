@@ -1,4 +1,4 @@
-#include "main.h"
+#include "shell.h"
 /**
  * shl_strcat - combine src to dest
  * @dest: destination

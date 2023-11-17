@@ -1,4 +1,4 @@
-#include "main.h"
+#include "shell.h"
 /**
  * shl_strcmp - compare str1 and str2
  * @str1: 1st str

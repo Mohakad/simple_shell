@@ -1,4 +1,4 @@
-#include "main.h"
+#include "shell.h"
 /**
  * main- no argumen
  * Return: 0 or error
@@ -17,7 +17,7 @@ int main(void)
 		}
 		if (shl_strcmp(usrinpt, "exit") == 0)
 			break;
-		if (strcmp(usrinpt, "env") == 0)
+		if (shl_strcmp(usrinpt, "env") == 0)
 		{
 			while (*env != NULL)
 			{
