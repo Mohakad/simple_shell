@@ -42,12 +42,16 @@ void executer(char **userinpt)
 	pid_t pid;
 
 	char *command = NULL, *comm2 = NULL;
-	
+
 	command = userinpt[0];
 	comm2 = get_path(command);
 	pid = fork();
 	if (strcmp(command, "exit") == 0)
 		exit(0);
+	if (strcmp(command, "env") == 0)
+	{
+		envir();
+	}
 	if (pid < 0)
 	{
 		perror("fork");

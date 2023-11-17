@@ -9,9 +9,7 @@ char **newtok(ssize_t nofch, char *usrinp)
 {
 	const char *newln = " \n";
 
-	char *usrinp2 = NULL;
-
-	char **argv = NULL, *token;
+	char *usrinp2 = NULL, **argv = NULL, *token;
 
 	int noftk = 0, i, j;
 

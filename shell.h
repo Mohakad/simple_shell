@@ -13,7 +13,7 @@ extern char **environ;
 #define PROMPT "> "
 #define COMM_LENGTH 1024
 #define ARG_S 100
-
+void envir(void);
 int shl_strlen(char *str);
 char **newtok(ssize_t nofch, char *usrinp);
 void execmd(char **argv);
