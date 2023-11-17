@@ -19,14 +19,12 @@ int main(int ac, char **argv)
 		printf("$ ");
 		nofch = getline(&usrinp, &nob, stdin);
 	if (nofch == -1)
-		return (-1);
-	usrinp2 = malloc(sizeof(char) * nofch);
-	if (usrinp2 == NULL)
 	{
-		perror("shell: memory error");
+		printf("\n");
 		return (-1);
 	}
-	strcpy(usrinp2, usrinp);
+	usrinp2 = malloc(sizeof(char) * nofch);
+	shl_strcpy(usrinp2, usrinp);
 	token = strtok(usrinp, newln);
 	while (token != NULL)
 	{
@@ -39,7 +37,7 @@ int main(int ac, char **argv)
 	for (i = 0; token != NULL; i++)
 	{
 		argv[i] = malloc(sizeof(char) * strlen(token));
-		strcpy(argv[i], token);
+		shl_strcpy(argv[i], token);
 		token = strtok(NULL, newln);
 	}
 	argv[i] = NULL;
