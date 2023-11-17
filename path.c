@@ -16,16 +16,16 @@ char *get_path(char *command)
 	if (path)
 	{
 		cofpath = strdup(path);
-		clen = strlen(command);
+		clen = shl_strlen(command);
 		path_token = strtok(cofpath, ":");
 		while (path_token != NULL)
 		{
 			dir_len = strlen(path_token);
 			file_path = malloc(clen + dir_len + 2);
-			strcpy(file_path, path_token);
-			strcat(file_path, "/");
-			strcat(file_path, command);
-			strcat(file_path, "\0");
+			shl_strcpy(file_path, path_token);
+			shl_strcat(file_path, "/");
+			shl_strcat(file_path, command);
+			shl_strcat(file_path, "\0");
 			if (stat(file_path, &buffer) == 0)
 			{
 				free(cofpath);

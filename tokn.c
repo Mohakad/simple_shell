@@ -13,15 +13,14 @@ char **newtok(ssize_t nofch, char *usrinp)
 
 	char **argv = NULL, *token;
 
-	int noftk = 0, i;
+	int noftk = 0, i, j;
 
 	usrinp2 = malloc(sizeof(char) * nofch);
 	if (usrinp2 == NULL)
 	{
-		perror("tsh: memory error");
-		exit(-1);
+		return (NULL);
 	}
-	strcpy(usrinp2, usrinp);
+	shl_strcpy(usrinp2, usrinp);
 	token = strtok(usrinp, newln);
 	while (token != NULL)
 	{
@@ -29,12 +28,21 @@ char **newtok(ssize_t nofch, char *usrinp)
 		token = strtok(NULL, newln);
 	}
 	noftk++;
-	argv = malloc(sizeof(char *) * noftk);
+	argv = malloc(sizeof(char *) * noftk + 1);
+	if (!argv)
+		return (NULL);
 	token = strtok(usrinp2, newln);
 	for (i = 0; token != NULL; i++)
 	{
 		argv[i] = malloc(sizeof(char) * strlen(token));
-		strcpy(argv[i], token);
+		if (!argv[i])
+		{
+			for (j = 0; j < i; j++)
+				free(argv[j]);
+			free(argv);
+			return (NULL);
+		}
+		shl_strcpy(argv[i], token);
 		token = strtok(NULL, newln);
 	}
 	argv[i] = NULL;

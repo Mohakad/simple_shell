@@ -22,6 +22,8 @@ void execmd(char **argv)
 		}
 		else if (pid == 0)
 		{
+			if (strcmp(comm2, "exit") == 0)
+				exit(0);
 			if (execve(comm2, argv, NULL) == -1)
 			{
 			perror("Error");
@@ -35,14 +37,17 @@ void execmd(char **argv)
  * executer- excute command
  * @userinpt: input
  */
-void executer(char *userinpt)
+void executer(char **userinpt)
 {
 	pid_t pid;
 
-	char *args[ARG_S + 1];
-
-	tokniz(userinpt, args);
+	char *command = NULL, *comm2 = NULL;
+	
+	command = userinpt[0];
+	comm2 = get_path(command);
 	pid = fork();
+	if (strcmp(command, "exit") == 0)
+		exit(0);
 	if (pid < 0)
 	{
 		perror("fork");
@@ -50,9 +55,8 @@ void executer(char *userinpt)
 	}
 	else if (pid == 0)
 	{
-		execv(args[0], args);
-		executer2(args);
-		fprintf(stderr, "userinpt not found: %s\n", args[0]);
+		if (execve(comm2, userinpt, NULL) == -1)
+			printf("command not found\n");
 		exit(1);
 	}
 	else

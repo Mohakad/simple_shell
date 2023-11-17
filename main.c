@@ -27,7 +27,9 @@ int main(int ac, char **argv)
 		{
 			argv = malloc(sizeof(char *) * noftk);
 			argv = newtok(nofch, usrinp);
-			execmd(argv);
+			if(!argv)
+				perror("shell");
+			executer(argv);
 		}
 	}
 	free(usrinp2), free(usrinp);
