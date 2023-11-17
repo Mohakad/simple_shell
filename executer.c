@@ -1,19 +1,34 @@
 #include "shell.h"
 /**
- * execmd: executer
+ * execmd- executer
  * @argv: argv
  */
 void execmd(char **argv)
 {
-	char *command = NULL;
+	char *command = NULL, *comm2 = NULL;
+
+	pid_t pid;
 
 	if (argv)
 	{
+
 		command = argv[0];
-		if (execve(command, argv, NULL) == -1)
+		comm2 = get_path(command);
+		pid = fork();
+		if (pid < 0)
 		{
-			perror("./shell");
+			perror("fork");
+			exit(1);
 		}
+		else if (pid == 0)
+		{
+			if (execve(comm2, argv, NULL) == -1)
+			{
+			perror("Error");
+			}
+		}
+		else
+			wait(NULL);
 	}
 }
 /**

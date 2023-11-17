@@ -1,6 +1,6 @@
 #include "shell.h"
 /**
- * toknize- create token
+ * tokniz- create token
  * @userinpt: user input
  * @args: argument
  */
