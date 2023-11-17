@@ -12,6 +12,7 @@ extern char **environ;
 #define PROMPT "> "
 #define COMM_LENGTH 1024
 #define ARG_S 100
+void execmd(char **argv);
 char *shl_strcat(char *dest, char *src);
 int shl_strcmp(char *str1, char *str2);
 char *shl_strcpy(char *str2, char *str1);

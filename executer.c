@@ -1,5 +1,21 @@
 #include "shell.h"
 /**
+ * execmd: executer
+ * @argv: argv
+ */
+void execmd(char **argv)
+{
+	char *command = NULL;
+	if (argv)
+	{
+		command = argv[0];
+		if (execve(command, argv, NULL) == -1)
+		{
+			perror("Error:");
+		}
+	}
+}
+/**
  * executer- excute command
  * @userinpt: input
  */
