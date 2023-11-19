@@ -8,20 +8,20 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <sys/stat.h>
+#include <fcntl.h>
+#include <errno.h>
 
 extern char **environ;
-#define PROMPT "> "
-#define COMM_LENGTH 1024
-#define ARG_S 100
-void envir(void);
-int shl_strlen(char *str);
-char **newtok(ssize_t nofch, char *usrinp);
-void execmd(char **argv);
+#define DELIM "\t\n"
+/*string*/
 char *shl_strcat(char *dest, char *src);
 int shl_strcmp(char *str1, char *str2);
 char *shl_strcpy(char *str2, char *str1);
-void executer(char **userinpt);
-void executer2(char **args);
-void tokniz(char *userinpt, char **args);
-char *get_path(char *command);
+int shl_strlen(char *str);
+char *shl_strdup(const char *str);
+
+void freea(char **comm);
+char *read_ln(void);
+int _execute(char **comm, char **argv);
+char **toki(char *usrinp);
 #endif
