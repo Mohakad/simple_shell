@@ -17,7 +17,7 @@ int _execute(char **comm, char **argv)
     else
     {
         waitpid(npid, &wait, 0);
-      	freea(comm); 
+    /*  freea(comm);*/
     }
     return (WEXITSTATUS(wait));
 }

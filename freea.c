@@ -1,13 +1,13 @@
 #include "shell.h"
 void freea(char **com)
 {
-    int i;
+   /* int i;*/
     if (!com)
-    	return;
-    for (i =0; com[i]; i++)
-	{
-		free(com[i]);
-		com[i] = NULL;
-	}
+	    return;
+   /**for (i =0; com[i] != '\n'; i++)
+*	{
+*		free(com[i]);
+*		com[i] = NULL;
+*	}*/
 	free(com), com = NULL;
 }

@@ -21,11 +21,11 @@ int main(int ac, char **argv)
 				write(STDOUT_FILENO, "\n", 1);
 			return (st);
 		}
-		
 		comm = toki(usrinp);
-		if (!comm)
+	if (!comm)
 		continue;
 
-		st = _execute(comm, argv);
+
+	st = _execute(comm, argv);
 	}
 }
