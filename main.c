@@ -13,29 +13,32 @@ int main(int argc, char *argv[])
 
 	size_t bufsize = 1024;
 
-	int ch;
+	ssize_t ch;
 
 	(void)argc;
 	buffer = (char *)malloc(bufsize * sizeof(char));
 	if (buffer == NULL)
 	{
 		perror(argv[0]);
-		exit(1);
+		exit(0);
 	}
 	while (1)
 	{
-		printf("$ ");
+		if (isatty(STDIN_FILENO))
+			write(STDOUT_FILENO, "$ ", 2);
 		ch = getline(&buffer, &bufsize, stdin);
 		if (ch == -1)
 		{
-			printf("\n");
-			break;
+			if (isatty(STDIN_FILENO))
+				write(STDOUT_FILENO, "\n", 1);
+			return (0);
 		}
 		buffer[ch - 1] = '\0';
 		pid = fork();
 		if (pid == -1)
 		{
 			perror(argv[0]);
+			free(buffer);
 			exit(1);
 		}
 		else if (pid == 0)
