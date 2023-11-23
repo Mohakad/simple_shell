@@ -11,7 +11,7 @@ int main(int argc, char *argv[])
 
 	char *buffer;
 
-	size_t bufsize = 1024;
+	size_t bufsize = 100;
 
 	ssize_t ch;
 
@@ -20,7 +20,7 @@ int main(int argc, char *argv[])
 	if (buffer == NULL)
 	{
 		perror(argv[0]);
-		exit(0);
+		exit(1);
 	}
 	while (1)
 	{
