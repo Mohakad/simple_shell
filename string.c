@@ -9,6 +9,7 @@ char *shl_strdup(const char *str)
 	int l = 0, i;
 
 	char *p;
+
 	if (str == NULL)
 		return (NULL);
 	while (*str != '\0')

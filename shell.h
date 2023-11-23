@@ -12,7 +12,7 @@
 #include <errno.h>
 
 extern char **environ;
-#define DELIM "\t\n"
+#define DELIM " \t\n"
 /*string*/
 char *shl_strcat(char *dest, char *src);
 int shl_strcmp(char *str1, char *str2);
