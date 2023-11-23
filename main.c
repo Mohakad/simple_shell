@@ -31,7 +31,7 @@ int main(int argc, char *argv[])
 		{
 			if (isatty(STDIN_FILENO))
 				write(STDOUT_FILENO, "\n", 1);
-			return (0);
+			break;
 		}
 		buffer[ch - 1] = '\0';
 		pid = fork();
