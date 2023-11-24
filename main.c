@@ -8,13 +8,13 @@
 int main(int argc, char *argv[])
 {
 	const char *delim = " \n";
-    int notk = 0, i, status;
-    char *usrinpcp = NULL, *token;
+    int notk = 0, status, i;
+    char *usrinpcp = NULL, *token, *com = NULL;
 	pid_t pid;
 
 	char *buffer = NULL;
 
-	size_t bufsize = 1024;
+	size_t bufsize = 0;
 
 	ssize_t ch;
 
@@ -24,6 +24,7 @@ int main(int argc, char *argv[])
 		if (isatty(STDIN_FILENO))
 			write(STDOUT_FILENO, "$ ", 2);
 		ch = getline(&buffer, &bufsize, stdin);
+		
 		if (ch == -1)
 		{
 			if (isatty(STDIN_FILENO))
@@ -37,9 +38,10 @@ int main(int argc, char *argv[])
                   return (-1);
 	  }
 	  strcpy(usrinpcp, buffer);
+	if (com == NULL)
+		com = argv[0];
 
-
-        token = strtok(usrinpcp, delim);
+	token = strtok(usrinpcp, delim);
 
         while (token != NULL){
             notk++;
@@ -53,18 +55,18 @@ int main(int argc, char *argv[])
 
         token = strtok(buffer, delim);
 
-        for (i = 0; token != NULL; i++){
+       for (i = 0; token != NULL; i++){
             argv[i] = malloc(sizeof(char) * strlen(token));
             strcpy(argv[i], token);
 
             token = strtok(NULL, delim);
-        }
+       }
         argv[i] = NULL;
 		pid = fork();
 		if (pid == 0) {
 
-   if (execve(argv[0], argv, NULL) == -1) {
-        perror(argv[0]);
+   if (execve(buffer, argv, NULL) == -1) {
+        perror(com);
         exit(1);
       }
     } 
