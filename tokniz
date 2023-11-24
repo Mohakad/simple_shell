@@ -1,0 +1,24 @@
+#include "shell.h"
+/**
+ */
+void tokenize(char *line, char **args)
+{
+	char *token = strtok(line, " ");
+
+	int i;
+
+	while (token) {
+    if (token[0] == '"' && token[strlen(token) - 1] == '"') {
+      args[i++] = strndup(token + 1, strlen(token) - 2);
+    } else {
+      args[i++] = token;
+    }
+
+    token = strtok(NULL, " ");
+  }
+i = 0;
+  args[i] = NULL;
+for (i = 0; args[i] != NULL; i++) {
+  free(args[i]);
+}
+}
