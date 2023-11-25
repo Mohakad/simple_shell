@@ -20,7 +20,7 @@ char *shl_strcpy(char *str2, char *str1);
 int shl_strlen(char *str);
 char *shl_strdup(const char *str);
 
-void freea(char **comm);
+void freem(char **arg);
 char *read_ln(void);
 int _execute(char **comm, char **argv);
 char **toki(char *usrinp);
