@@ -21,7 +21,7 @@ int shl_strlen(char *str);
 char *shl_strdup(const char *str);
 
 void freem(char **arg);
-char *read_ln(void);
-int _execute(char **comm, char **argv);
-char **toki(char *usrinp);
+char *readln(void);
+int execute(char **command, char **args);
+char **tokenize(char *inp);
 #endif

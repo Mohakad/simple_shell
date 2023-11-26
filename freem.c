@@ -5,13 +5,15 @@
  */
 void freem(char **arg)
 {
-	int i;
+	int ind;
 
-	if (arg)
+	if (!arg)
+		return;
+	for (ind = 0; arg[ind]; ind++)
 	{
-		for (i = 0; arg[i] != NULL; i++)
-			free(arg[i]);
-		free(arg);
-		arg = NULL;
+		free(arg[ind]);
+		arg[ind] = NULL;
 	}
+	free(arg);
+	arg = NULL;
 }
