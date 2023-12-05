@@ -32,7 +32,10 @@ int main(int argc, char **argv, char **env)
 				m_exit(usrinp2, usrinp, stat);
 			}
 			else if (!str_cmp(usrinp2[0], "setenv"))
-				setenv(usrinp2[1], usrinp, 2);
+			{
+				if (setenv(usrinp2[1], usrinp, 1) != 0)
+					printf("error\n");
+			}
 			else if (!str_cmp(usrinp2[0], "unsetenv"))
 				unsetenv(usrinp2[1]);
 			else if (!str_cmp(usrinp2[0], "env"))
