@@ -31,9 +31,13 @@ int main(int argc, char **argv, char **env)
 				stat = atoi(usrinp2[1]);
 				m_exit(usrinp2, usrinp, stat);
 			}
+			if (!str_cmp(usrinp2[0]), "setenv")
+				setenv(usrinp2[1], usrinp[2], 1);
+			if (!str_cmp(usrinp2[0]), "unsetenv")
+				unsetenv(usrinp[1]);
 			if (!str_cmp(usrinp2[0], "env"))
 				_getenv(env);
-			else
+ 			else
 			{
 				n = fnd_pathv(&usrinp2[0], env);
 				stat = my_fork(usrinp2, argv, env, usrinp, val, n);
