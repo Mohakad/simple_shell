@@ -26,16 +26,16 @@ int main(int argc, char **argv, char **env)
 			}
 			if ((!str_cmp(usrinp2[0], "exit")) && usrinp2[1] == NULL)
 				m_exit(usrinp2, usrinp, stat);
-			if ((!str_cmp(usrinp2[0], "exit")) && usrinp2[1] != NULL)
+			else if ((!str_cmp(usrinp2[0], "exit")) && usrinp2[1] != NULL)
 			{
 				stat = atoi(usrinp2[1]);
 				m_exit(usrinp2, usrinp, stat);
 			}
-			if (!str_cmp(usrinp2[0], "setenv"))
+			else if (!str_cmp(usrinp2[0], "setenv"))
 				setenv(usrinp2[1], usrinp, 2);
-			if (!str_cmp(usrinp2[0], "unsetenv"))
+			else if (!str_cmp(usrinp2[0], "unsetenv"))
 				unsetenv(usrinp2[1]);
-			if (!str_cmp(usrinp2[0], "env"))
+			else if (!str_cmp(usrinp2[0], "env"))
 				_getenv(env);
  			else
 			{
