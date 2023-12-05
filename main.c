@@ -32,7 +32,7 @@ int main(int argc, char **argv, char **env)
 				m_exit(usrinp2, usrinp, stat);
 			}
 			if (!str_cmp(usrinp2[0], "setenv"))
-				setenv(usrinp2[1], usrinp, 1);
+				setenv(usrinp2[1], usrinp, 2);
 			if (!str_cmp(usrinp2[0], "unsetenv"))
 				unsetenv(usrinp2[1]);
 			if (!str_cmp(usrinp2[0], "env"))
